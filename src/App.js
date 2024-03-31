@@ -14,6 +14,7 @@ function App() {
       { date: "2020-09-03", views: 200, article: "Article 4" }
     ]
   );
+  // The main thing is we must not sort the given array itself. Copy that using spread operator and sort that copied array or else UI won't change.
 
   const handleDateSort = () => {
     const copiedArr = [...data];
@@ -36,7 +37,7 @@ function App() {
           n=0;
         }
       }
-      if(i === copiedArr.length-1 && n>0) {
+      if(i === copiedArr.length-1 && n>0) { // this edge case is must because some identical rows may come last and it won't enter else block. Also, change the left and right of the range to be sorted. Abovel l, r are different.
         l = i-n;
         r = i;
         mergeSort(copiedArr, l, r, "views");
@@ -66,7 +67,7 @@ function App() {
           n=0;
         }
       } 
-      if(i === copiedArr.length-1 && n>0) {
+      if(i === copiedArr.length-1 && n>0) { 
         l = i-n;
         r = i;
         console.log(n, l, r);
